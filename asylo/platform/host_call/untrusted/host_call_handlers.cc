@@ -360,7 +360,7 @@ Status GetAddrInfoHandler(const std::shared_ptr<primitives::Client> &client,
     hints.ai_addr = nullptr;
     hints.ai_next = nullptr;
   }
-  struct addrinfo *result;
+  struct addrinfo *result = nullptr;
   output->Push<int>(
       getaddrinfo(node, service, hints_provided ? &hints : nullptr, &result));
   output->Push<int>(errno);
